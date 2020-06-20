@@ -1,0 +1,11 @@
+/* This holds the special CSS for the FISH project
+ * 
+ */
+
+.alert {
+  @apply p-5 mb-10 border border-red-500 rounded;
+}
+
+.alert-danger {
+  @apply text-red-700 bg-red-200 ;
+}
