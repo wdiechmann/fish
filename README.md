@@ -1,16 +1,82 @@
 # Fish
 
-Once you've cloned this repo you'll have a basic Phoenix app with rudimentary
-user registration/signin/-out
+Once you've cloned this repo `git clone https://github.com/wdiechmann/fish.git`
+you'll have a basic Phoenix app with rudimentary
+user registration/signin/-out, backed in Surface, TailwindCSS, and authorization using
+OAuth (which will allow your users to authorize using eg Twitter, GitHub, et al),
+ready to be deployed on your favorite hosting partners VM.
 
-To start your Phoenix server:
+For you to hit the tarmac running all you have to do is follow this recipe (and I apologise if
+your hosting provider does not provide you with a VM flavour supporting this 100%). Should you have a
+fully operational server with Dokku on your hands already,
+skip to the [Phoenix container](#phoenix_container) paragraph below!
 
-- Setup the project with `mix setup`
-- Start Phoenix endpoint with `mix phx.server`
+## Basic server install
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+This recipe will not detail every step but point you towards recipes - who knows, you might decide to
+buy into [Amazon](https://aws.amazon.com/), [Google](https://cloud.google.com/), [Microsoft Cloud](https://azure.microsoft.com/) provisions - or perhaps use guys like [UpCloud](upcloud.com) (I'm in no way
+affiliated, or receiving any kickbacks, their just one example in a 'clouded' crowd).
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+You are, however, perfectly able to setup your own hardware and build your own (albeit small scale)
+cloud provision.
+
+- start by installing [VMWARE](https://pubs.vmware.com/vsphere-51/index.jsp?topic=%2Fcom.vmware.vsphere.solutions.doc%2FGUID-0A264828-3933-4F4F-82D7-B5006A90CDBA.html) on your hardware
+
+- build your [first VM](https://pubs.vmware.com/vsphere-51/index.jsp?topic=%2Fcom.vmware.vsphere.solutions.doc%2FGUID-0A264828-3933-4F4F-82D7-B5006A90CDBA.html) (virtual machine) using [an image of Debian](https://www.debian.org/distrib/netinst) 9 - somewhat like [alain3888 do here](https://community.spiceworks.com/how_to/135817-install-debian-on-esxi)
+
+By now you have a server installed and I guess/suggest you did [install/enabled](https://phoenixnap.com/kb/how-to-enable-ssh-on-debian) SSH!
+
+## Docker and Dokku install
+
+Docker affords managing any number (well theoretically at least) of containers on your VM (and yes this is
+starting to look a lot like 'Russian Doll' but trust me, it works rather well!) and Dokku makes it easy
+on your sore fingers to deploy containers.
+
+- the nice guys at upcloud wrote a very nice and concise recipe on [installing both Docker and Dokku](https://upcloud.com/community/tutorials/get-started-dokku-debian/), heck it even includes a small test at the end allowing you to get your feet wet already!
+
+<h2 id="phoenix_container">Phoenix container</h2>
+
+This was quite a detour - but not the last I'm afraid even if I really try to restrain myself :)
+
+In fact here is one more for you already! This repo uses a MySQL kind'a DB and if you are a PostgreSQL
+guy you probably will start by changing the 'db driver' - and you might be tempted to fire up something like [this patching thing](https://www.pair.com/support/kb/paircloud-diff-and-patch/), but here's the thing: it's basically literally 1 line - and then changing passwords, but who's counting ;)
+
+```
+diff -r postgress/config/dev.exs mysql/config/dev.exs
+4,6c4,6
+< config :postgress, Postgress.Repo,
+<   username: "postgres",
+<   password: "postgres",
+---
+> config :mysql, Mysql.Repo,
+>   username: "root",
+>   password: "",
+diff -r postgress/config/test.exs mysql/config/test.exs
+8,10c8,10
+< config :postgress, Postgress.Repo,
+<   username: "postgres",
+<   password: "postgres",
+---
+> config :mysql, Mysql.Repo,
+>   username: "root",
+>   password: "",
+diff -r postgress/mix.exs mysql/mix.exs
+39c39
+<       {:postgrex, ">= 0.0.0"},
+---
+>       {:myxql, ">= 0.0.0"},
+
+```
+
+## Starting the Fish App
+
+To start your cloned fish repo you have options:
+
+- start it like any ordinary Phoenix App in development mode using `iex -S mix phx.server`
+- release it and start it with something like `_build/dev/fish/bin/fish start`
+- use the container(s) and start it with `docker-compose up`
+
+That last option does however require that you have Docker Desktop installed on your local computer!
 
 ## Deployment
 
