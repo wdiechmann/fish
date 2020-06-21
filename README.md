@@ -2,7 +2,8 @@
 
 Once you've cloned this repo `git clone https://github.com/wdiechmann/fish.git`
 you'll have a basic Phoenix app with rudimentary
-user registration/signin/-out, backed in Surface, TailwindCSS, and authorization using
+user registration/signin/-out, backed in [Surface](https://github.com/msaraiva/surface) - a tremendous thing by Marlus Saraiva,
+[TailwindCSS](https://github.com/tailwindcss) - yet another very nice thing by Adam Wathan and Jonathan Reinink, and authorization using
 OAuth (which will allow your users to authorize using eg Twitter, GitHub, et al),
 ready to be deployed on your favorite hosting partners VM.
 
@@ -80,8 +81,7 @@ That last option does however require that you have Docker Desktop installed on 
 
 ## Deployment
 
-Read my post on https://cunnin.gs - retrofit the clone to your choice of db, server, etc and enjoy with a
-single `git push dokku master`
+Read [my post](https://cunnin.gs/2-weeks-of-elixir-phoenix-docker-hell/) - retrofit the clone to your choice of db, server, etc and enjoy with a single `git push dokku master`
 
 ## Notes
 

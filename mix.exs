@@ -34,21 +34,21 @@ defmodule Fish.MixProject do
   defp deps do
     [
       {:phoenix, "~> 1.5.1"},
-      {:phoenix_live_view, "~> 0.13.2"},
+      {:phoenix_live_view, "~> 0.13.3"},
       {:floki, ">= 0.0.0", only: :test},
       {:phoenix_ecto, "~> 4.1"},
       {:ecto_sql, "~> 3.4"},
       {:myxql, ">= 0.0.0"},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_dashboard, "~> 0.2.0"},
+      {:phoenix_live_dashboard, "~> 0.2.6"},
       {:telemetry_metrics, "~> 0.4"},
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
       {:pow, "~> 1.0"},
       {:jason, "~> 1.0"},
       {:pow_assent, "~> 0.4.8"},
-
+      {:surface, "~> 0.1.0-alpha.2"},
       # Optional, but recommended for SSL validation with :httpc adapter
       {:certifi, "~> 2.4"},
       {:ssl_verify_fun, "~> 1.1"},

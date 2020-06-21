@@ -43,7 +43,10 @@ defmodule FishWeb do
         only: [get_flash: 1, get_flash: 2, view_module: 1, view_template: 1]
 
       import Phoenix.LiveView.Helpers
+
       # Include shared imports and aliases for views
+
+      import Surface
       unquote(view_helpers())
     end
   end
