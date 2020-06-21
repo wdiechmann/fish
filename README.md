@@ -2,7 +2,7 @@
 
 Once you've cloned this repo `git clone https://github.com/wdiechmann/fish.git`
 you'll have a basic Phoenix app with rudimentary
-user registration/signin/-out, backed in [Surface](https://github.com/msaraiva/surface) - a tremendous thing by Marlus Saraiva,
+user registration/signin/-out, baked in [Surface](https://github.com/msaraiva/surface) - a tremendous thing by Marlus Saraiva,
 [TailwindCSS](https://github.com/tailwindcss) - yet another very nice thing by Adam Wathan and Jonathan Reinink, and authorization using
 OAuth (which will allow your users to authorize using eg Twitter, GitHub, et al),
 ready to be deployed on your favorite hosting partners VM.
