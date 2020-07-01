@@ -5,8 +5,8 @@
         <div class="flex">
           <div class="flex-shrink-0 flex items-center">
             <a href="/">
-              <img class="block lg:hidden h-8 w-auto" src="/images/speicher-red-blue.png" alt="SPEICHER logo" />
-              <img class="hidden lg:block h-8 w-auto" src="/images/speicher-red-blue.png" alt="SPEICHER logo" />
+              <img class="block lg:hidden h-8 w-auto" src="/" alt="SPEICHER logo" />
+              <img class="hidden lg:block h-8 w-auto" src="/" alt="SPEICHER logo" />
             </a>
           </div><!--
           <div class="hidden sm:-my-px sm:ml-6 sm:flex">
